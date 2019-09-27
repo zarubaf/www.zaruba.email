@@ -21,7 +21,7 @@ title_separator          : "|"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Florian Zaruba"
 description              : "PhD Student. Hardware enthusiast."
-url                      : https://zaruba.email
+url                      : https://www.zaruba.email
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : zarubaf/zaruba.email
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
