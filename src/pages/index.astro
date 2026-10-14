@@ -1,0 +1,61 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site";
+import { me, publications } from "../data/publications";
+import { talks } from "../data/talks";
+import { chips } from "../data/chips";
+---
+<Base>
+  <header>
+    <h1>{site.title}</h1>
+    <p class="lede">Processor and accelerator design.</p>
+    <ul class="links">
+      {site.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+    </ul>
+  </header>
+
+  <h2>About</h2>
+  <p>
+    My name is Florian and I am currently at Axelera AI. I did my PhD at the
+    <a href="https://iis.ee.ethz.ch/">Integrated Systems Laboratory</a> of
+    <a href="https://ethz.ch/en">ETH Zurich</a>. My research interests include the design of very
+    large scale integration circuits, with a particular focus on application-specific integrated
+    circuits and their use in high-performance computing. Please don't hesitate to get in touch.
+  </p>
+
+  <h2>Selected publications</h2>
+  <ol class="entries">
+    {publications.map((p) => (
+      <li>
+        <a class="entry-title" href={p.href}>{p.title}</a>
+        <span class="meta">
+          {p.authors.map((a, i) => (
+            <>{i > 0 && (i === p.authors.length - 1 ? " and " : ", ")}{a === me ? <span class="me">{a}</span> : a}</>
+          ))}
+        </span>
+        <span class="meta"><em>{p.venue}</em></span>
+      </li>
+    ))}
+  </ol>
+  <p class="meta">Full list on <a href={site.links.find((l) => l.label === "Google Scholar")!.href}>Google Scholar</a>.</p>
+
+  <h2>Talks</h2>
+  <ol class="entries">
+    {talks.map((t) => (
+      <li>
+        <a class="entry-title" href={t.href}>{t.title}</a>
+        <span class="meta">{t.venue}</span>
+      </li>
+    ))}
+  </ol>
+
+  <h2>Chips</h2>
+  <ol class="entries">
+    {chips.map((c) => (
+      <li>
+        <a class="entry-title" href={c.href}>{c.name}</a> <span class="tag">{c.process} · {c.year}</span>
+        <span class="meta">{c.note}</span>
+      </li>
+    ))}
+  </ol>
+</Base>
